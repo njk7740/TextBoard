@@ -3,6 +3,7 @@ package Controller;
 import Model.PostData;
 import View.PostIO;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PostControl {
@@ -49,7 +50,14 @@ public class PostControl {
         int num = postIO.getPostNum();
         int idx = postData.toIndex(num);
         if (!postData.exist(idx) || idx < 0) System.out.println("없는 게시물 번호입니다.");
-        else postIO.putPost(postData.getPosts().get(idx));
+        else {
+            do {
+                postData.get(idx).viewUp();
+                postIO.putPost(postData.get(idx));
+                postData.get(idx).comment().printComments();
+            } while(detailMenu(idx));
+
+        }
     }
 
     public void test() {
@@ -64,6 +72,15 @@ public class PostControl {
 
     public void search() {
         String key = postIO.getSearchKey();
+        ArrayList<Integer> arr = postData.getIndexByKey(key);
+        for (int i : arr) postIO.putPostSimple(postData.get(i));
+    }
 
+    public boolean detailMenu(int idx) {
+        int func = postIO.printDetailMenu();
+        if (func == 1) postData.get(idx).comment().addComment();
+            //else if(func == 2)
+        else if (func == 5) return false;
+        return true;
     }
 }

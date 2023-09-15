@@ -1,10 +1,13 @@
 package Controller;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Board {
     Scanner sc = new Scanner(System.in);
     PostControl postControl = new PostControl();
+    UserControl userControl = new UserControl();
+    HashMap<String, String> userInfo;
 
     public void run() {
 
@@ -20,6 +23,7 @@ public class Board {
             else if (func.equals("detail")) postControl.detail();
             else if (func.equals("test")) postControl.test();
             else if (func.equals("search")) postControl.search();
+            else if (func.equals("signup")) userControl.signup();
 
         }
     }

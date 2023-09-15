@@ -56,11 +56,18 @@ public class PostIO {
         System.out.println("제목 : " + post.getTitle());
         System.out.println("내용 : " + post.getDetail());
         System.out.println("등록날짜 : " + post.getDate());
+        System.out.println("조회수 : " + post.getViews());
         System.out.println("====================");
     }
 
     public String getSearchKey() {
         System.out.print("검색할 키워드를 입력해주세요 : ");
         return getString();
+    }
+
+    public int printDetailMenu() {
+        System.out.println("상세보기 기능을 선택해주세요");
+        System.out.print("(1. 댓글 등록, 2. 추천, 3. 수정, 4. 삭제, 5. 목록으로) : ");
+        return getInt();
     }
 }

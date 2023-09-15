@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.CommentControl;
 import Util.Util;
 
 public class Post {
@@ -7,11 +8,24 @@ public class Post {
     private String detail;
     private int number;
     private String date;
+    private int views;
+
+    CommentControl commentControl = new CommentControl();
+
 
     Post(String title, String detail) {
         this.title = title;
         this.detail = detail;
         setDate();
+        this.views = 0;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public String getTitle() {
@@ -49,4 +63,13 @@ public class Post {
     public boolean contains(String key) {
         return this.title.contains(key);
     }
+
+    public void viewUp(){
+        this.views++;
+    }
+
+    public CommentControl comment() {
+        return commentControl;
+    }
+
 }

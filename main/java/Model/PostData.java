@@ -44,14 +44,17 @@ public class PostData {
         posts.remove(index);
     }
 
-    /*
     public ArrayList<Integer> getIndexByKey(String key) {
         ArrayList<Integer> idx = new ArrayList<>();
         for(int i = 0; i < posts.size(); i++) {
-            // todo search 인덱스 뽑아내기 구현
+            if(posts.get(i).contains(key))
+                idx.add(i);
         }
+        return idx;
     }
 
-     */
+    public Post get(int index){
+        return posts.get(index);
+    }
 
 }
