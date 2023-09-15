@@ -48,14 +48,14 @@ public class PostData {
 
     public ArrayList<Integer> getIndexByKey(String key) {
         ArrayList<Integer> idx = new ArrayList<>();
-        for(int i = 0; i < posts.size(); i++) {
-            if(posts.get(i).contains(key))
+        for (int i = 0; i < posts.size(); i++) {
+            if (posts.get(i).contains(key))
                 idx.add(i);
         }
         return idx;
     }
 
-    public Post get(int index){
+    public Post get(int index) {
         return posts.get(index);
     }
 

@@ -8,6 +8,7 @@ public class CommentData {
     public void add(String text, String writer) {
         comments.add(new Comment(text, writer));
     }
+
     public Comment get(int index) {
         return comments.get(index);
     }

@@ -31,15 +31,15 @@ public class Board {
                     break;
                 case "update":
                     if (userInfo == null) System.out.println("로그인 후 이용해주세요.");
-                    else postControl.update();
+                    else postControl.update(userInfo.get("아이디"));
                     break;
                 case "delete":
                     if (userInfo == null) System.out.println("로그인 후 이용해주세요.");
-                    else postControl.delete();
+                    else postControl.delete(userInfo.get("아이디"));
                     break;
                 case "detail":
-                    if (userInfo == null) postControl.detail("(guest)");
-                    else postControl.detail(userInfo.get("닉네임"));
+                    if (userInfo == null) postControl.detail("(guest)", "guest");
+                    else postControl.detail(userInfo.get("닉네임"), userInfo.get("아이디"));
                     break;
                 case "search":
                     postControl.search();

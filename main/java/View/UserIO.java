@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class UserIO {
 
     Scanner scanner = new Scanner(System.in);
+
     public void getUseID(HashMap<String, String> map) {
         System.out.print("사용하실 아이디를 입력해주세요 : ");
         map.put("아이디", scanner.nextLine());

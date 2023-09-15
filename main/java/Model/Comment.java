@@ -6,6 +6,7 @@ public class Comment {
     String text;
     String time;
     String writer;
+
     Comment(String text, String writer) {
         this.text = text;
         this.time = Util.getNowTime();

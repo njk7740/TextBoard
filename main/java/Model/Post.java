@@ -3,6 +3,7 @@ package Model;
 import Controller.CommentControl;
 import Util.Util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Post {
@@ -12,6 +13,8 @@ public class Post {
     private String date;
     private int views;
     private HashMap<String, String> userInfo;
+    private int greats;
+    private ArrayList<String> greatUserID = new ArrayList<>();
 
     CommentControl commentControl = new CommentControl();
 
@@ -22,6 +25,7 @@ public class Post {
         setDate();
         this.views = 0;
         this.userInfo = userInfo;
+        this.greats = 0;
     }
 
     public int getViews() {
@@ -64,7 +68,7 @@ public class Post {
         return this.title.contains(key);
     }
 
-    public void viewUp(){
+    public void viewUp() {
         this.views++;
     }
 
@@ -78,5 +82,29 @@ public class Post {
 
     public void setUserInfo(HashMap<String, String> userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public int getGreats() {
+        return greats;
+    }
+
+    public void setGreats(int greats) {
+        this.greats = greats;
+    }
+
+    public boolean match(String ID) {
+        return ID.equals(userInfo.get("아이디"));
+    }
+
+    public int greatUp(String userID) {
+        for (String str : greatUserID) {
+            if (str.equals(userID)) {
+                return -3;
+            }
+        }
+        greats++;
+        greatUserID.add(userID);
+        System.out.println("해당 게시물을 추천하셨습니다.");
+        return 2;
     }
 }
