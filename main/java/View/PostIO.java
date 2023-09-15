@@ -15,7 +15,14 @@ public class PostIO {
     }
 
     public int getInt() {
-        return Integer.parseInt(scanner.nextLine());
+        while (true) {
+            try {
+                int num = Integer.parseInt(scanner.nextLine());
+                return num;
+            } catch (NumberFormatException e) {
+                System.out.print("숫자만 입력해주세요 : ");
+            }
+        }
     }
 
     public HashMap<String, String> getPostInfo() {
@@ -27,26 +34,33 @@ public class PostIO {
         return info;
     }
 
+    public void putPostSimple(Post post) {
+        System.out.println("====================");
+        System.out.println("게시물 번호 : " + post.getNumber());
+        System.out.println("제목 : " + post.getTitle());
+        System.out.println("====================");
+    }
+
+    public void putPosts(ArrayList<Post> posts) {
+        for (Post post : posts) putPostSimple(post);
+    }
+
+    public int getPostNum() {
+        System.out.print("게시물 번호를 입력해주세요 : ");
+        return getInt();
+    }
+
     public void putPost(Post post) {
         System.out.println("====================");
         System.out.println("게시물 번호 : " + post.getNumber());
         System.out.println("제목 : " + post.getTitle());
         System.out.println("내용 : " + post.getDetail());
+        System.out.println("등록날짜 : " + post.getDate());
         System.out.println("====================");
     }
 
-    public void putPosts(ArrayList<Post> posts) {
-        for (Post post : posts) putPost(post);
-    }
-
-    public HashMap<String, String> getUpdatePostNumber() {
-        HashMap<String, String> map = new HashMap<>();
-        System.out.print("수정할 게시물 번호를 입력해주세요 : ");
-        map.put("번호", getString());
-        System.out.print("제목을 입력해주세요 : ");
-        map.put("제목", getString());
-        System.out.print("내용을 입력해주세요 : ");
-        map.put("내용", getString());
-        return map;
+    public String getSearchKey() {
+        System.out.print("검색할 키워드를 입력해주세요 : ");
+        return getString();
     }
 }

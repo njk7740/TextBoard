@@ -7,6 +7,7 @@ public class Board {
     PostControl postControl = new PostControl();
 
     public void run() {
+
         while (true) {
             System.out.print("명령어 입력 : ");
             String func = sc.nextLine();
@@ -15,6 +16,10 @@ public class Board {
             else if (func.equals("add")) postControl.add();
             else if (func.equals("list")) postControl.list();
             else if (func.equals("update")) postControl.update();
+            else if (func.equals("delete")) postControl.delete();
+            else if (func.equals("detail")) postControl.detail();
+            else if (func.equals("test")) postControl.test();
+            else if (func.equals("search")) postControl.search();
 
         }
     }

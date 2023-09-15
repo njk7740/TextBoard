@@ -22,9 +22,48 @@ public class PostControl {
     }
 
     public void update() {
-        map = postIO.getUpdatePostNumber();
-        int idx = postData.toIndex(Integer.parseInt(map.get("번호")));
-        postData.update(idx, map.get("제목"), map.get("내용"));
-        System.out.println(map.get("번호") + "번 게시물을 수정했습니다.");
+        System.out.print("수정할 ");
+        int num = postIO.getPostNum();
+        int idx = postData.toIndex(num);
+        if (!postData.exist(idx) || idx < 0) System.out.println("없는 게시물 번호입니다.");
+        else {
+            map = postIO.getPostInfo();
+            postData.update(idx, map.get("제목"), map.get("내용"));
+            System.out.println(num + "번 게시물을 수정했습니다.");
+        }
+    }
+
+    public void delete() {
+        System.out.print("삭제할 ");
+        int num = postIO.getPostNum();
+        int idx = postData.toIndex(num);
+        if (!postData.exist(idx) || idx < 0) System.out.println("없는 게시물 번호입니다.");
+        else {
+            System.out.println(num + "번 게시물을 삭제했습니다.");
+            postData.delete(idx);
+        }
+    }
+
+    public void detail() {
+        System.out.print("상세보기 할 ");
+        int num = postIO.getPostNum();
+        int idx = postData.toIndex(num);
+        if (!postData.exist(idx) || idx < 0) System.out.println("없는 게시물 번호입니다.");
+        else postIO.putPost(postData.getPosts().get(idx));
+    }
+
+    public void test() {
+        postData.add("첫번째 테스트용 게시물", "블라블라");
+        postData.add("두번째 자바 프로그래밍", "블라블라");
+        postData.add("세번째 나를 자바바", "블라블라");
+        postData.add("네번째 뭘 적지", "블라블라");
+        postData.add("다섯번째 요기까지 테스트용 게시물", "블라블라");
+
+        System.out.println("테스트용 게시물 추가 완료");
+    }
+
+    public void search() {
+        String key = postIO.getSearchKey();
+
     }
 }
