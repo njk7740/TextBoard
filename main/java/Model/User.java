@@ -3,12 +3,12 @@ package Model;
 public class User {
     private String ID;
     private String PW;
-    private String Nickname;
+    private String nickName;
 
-    User(String ID, String PW, String Nickname) {
+    User(String ID, String PW, String nickName) {
         this.ID = ID;
         this.PW = PW;
-        this.Nickname = Nickname;
+        this.nickName = nickName;
     }
 
     public String getID() {
@@ -19,7 +19,7 @@ public class User {
         return PW;
     }
 
-    public String getNickname() {
-        return Nickname;
+    public String getnickname() {
+        return nickName;
     }
 }
