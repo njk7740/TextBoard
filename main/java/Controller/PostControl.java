@@ -45,7 +45,7 @@ public class PostControl {
         }
     }
 
-    public void detail() {
+    public void detail(String writer) {
         System.out.print("상세보기 할 ");
         int num = postIO.getPostNum();
         int idx = postData.toIndex(num);
@@ -55,20 +55,11 @@ public class PostControl {
                 postData.get(idx).viewUp();
                 postIO.putPost(postData.get(idx));
                 postData.get(idx).comment().printComments();
-            } while(detailMenu(idx));
+            } while(detailMenu(idx, writer));
 
         }
     }
 
-    public void test() {
-        postData.add("첫번째 테스트용 게시물", "블라블라");
-        postData.add("두번째 자바 프로그래밍", "블라블라");
-        postData.add("세번째 나를 자바바", "블라블라");
-        postData.add("네번째 뭘 적지", "블라블라");
-        postData.add("다섯번째 요기까지 테스트용 게시물", "블라블라");
-
-        System.out.println("테스트용 게시물 추가 완료");
-    }
 
     public void search() {
         String key = postIO.getSearchKey();
@@ -76,11 +67,15 @@ public class PostControl {
         for (int i : arr) postIO.putPostSimple(postData.get(i));
     }
 
-    public boolean detailMenu(int idx) {
+    public boolean detailMenu(int idx, String writer) {
         int func = postIO.printDetailMenu();
-        if (func == 1) postData.get(idx).comment().addComment();
+        if (func == 1) postData.get(idx).comment().addComment(writer);
             //else if(func == 2)
         else if (func == 5) return false;
         return true;
+    }
+
+    public void setUserInfo(HashMap<String, String> userInfo) {
+        postData.setUserInfo(userInfo);
     }
 }

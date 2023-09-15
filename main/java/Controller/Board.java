@@ -11,6 +11,7 @@ public class Board {
 
     public void run() {
 
+        label:
         while (true) {
             if (userInfo == null)
                 System.out.print("명령어 입력 : ");
@@ -18,17 +19,43 @@ public class Board {
                 System.out.printf("명령어 입력 [%s] : ", userInfo.get("닉네임"));
             String func = sc.nextLine();
 
-            if (func.equals("exit")) break;
-            else if (func.equals("add")) postControl.add();
-            else if (func.equals("list")) postControl.list();
-            else if (func.equals("update")) postControl.update();
-            else if (func.equals("delete")) postControl.delete();
-            else if (func.equals("detail")) postControl.detail();
-            else if (func.equals("test")) postControl.test();
-            else if (func.equals("search")) postControl.search();
-            else if (func.equals("signup")) userControl.signup();
-            else if (func.equals("login")) userInfo = userControl.login();
-
+            switch (func) {
+                case "exit":
+                    break label;
+                case "add":
+                    if (userInfo == null) System.out.println("로그인 후 이용해주세요.");
+                    else postControl.add();
+                    break;
+                case "list":
+                    postControl.list();
+                    break;
+                case "update":
+                    if (userInfo == null) System.out.println("로그인 후 이용해주세요.");
+                    else postControl.update();
+                    break;
+                case "delete":
+                    if (userInfo == null) System.out.println("로그인 후 이용해주세요.");
+                    else postControl.delete();
+                    break;
+                case "detail":
+                    if (userInfo == null) postControl.detail("(guest)");
+                    else postControl.detail(userInfo.get("닉네임"));
+                    break;
+                case "search":
+                    postControl.search();
+                    break;
+                case "signup":
+                    userControl.signup();
+                    break;
+                case "login":
+                    userInfo = userControl.login();
+                    postControl.setUserInfo(userInfo);
+                    break;
+                case "logout":
+                    userInfo = null;
+                    System.out.println("로그아웃이 완료되었습니다.");
+                    break;
+            }
         }
     }
 }

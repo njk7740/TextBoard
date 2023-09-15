@@ -12,8 +12,8 @@ public class CommentControl {
         return commentData.get(index);
     }
 
-    public void addComment() {
-        commentData.add(commentIO.getCommentText());
+    public void addComment(String writer) {
+        commentData.add(commentIO.getCommentText(), writer);
         System.out.println("댓글이 등록되었습니다.");
     }
 

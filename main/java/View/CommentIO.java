@@ -16,7 +16,7 @@ public class CommentIO {
         System.out.println("======= 댓글 =======");
         if(comments.isEmpty()) System.out.println("댓글이 없습니다.");
         else for(Comment comment : comments)
-            System.out.printf(" : %s (%s)\n", comment.getText(), comment.getTime());
+            System.out.printf("%s : %s (%s)\n", comment.getWriter(), comment.getText(), comment.getTime());
         System.out.println("====================");
     }
 }

@@ -3,29 +3,29 @@ package Model;
 import Controller.CommentControl;
 import Util.Util;
 
+import java.util.HashMap;
+
 public class Post {
     private String title;
     private String detail;
     private int number;
     private String date;
     private int views;
+    private HashMap<String, String> userInfo;
 
     CommentControl commentControl = new CommentControl();
 
 
-    Post(String title, String detail) {
+    Post(String title, String detail, HashMap<String, String> userInfo) {
         this.title = title;
         this.detail = detail;
         setDate();
         this.views = 0;
+        this.userInfo = userInfo;
     }
 
     public int getViews() {
         return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
     }
 
     public String getTitle() {
@@ -72,4 +72,11 @@ public class Post {
         return commentControl;
     }
 
+    public HashMap<String, String> getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(HashMap<String, String> userInfo) {
+        this.userInfo = userInfo;
+    }
 }

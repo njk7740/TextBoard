@@ -1,12 +1,14 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PostData {
     ArrayList<Post> posts = new ArrayList<>();
+    private HashMap<String, String> userInfo;
 
     public void add(String title, String detail) {
-        Post post = new Post(title, detail);
+        Post post = new Post(title, detail, userInfo);
         if (posts.isEmpty()) post.setNumber(1);
         else post.setNumber(posts.get(posts.size() - 1).getNumber() + 1);
         posts.add(post);
@@ -57,4 +59,11 @@ public class PostData {
         return posts.get(index);
     }
 
+    public HashMap<String, String> getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(HashMap<String, String> userInfo) {
+        this.userInfo = userInfo;
+    }
 }
