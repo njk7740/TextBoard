@@ -60,12 +60,13 @@ public class PostControl {
             int run = 0;
             while (run != -2) {
                 postData.get(idx).viewUp();
-                postIO.putPost(postData.get(idx));
+                String great = postData.get(idx).matchGreatUser(userID) ? "♥" : "♡";
+                postIO.putPost(postData.get(idx), great);
                 postData.get(idx).comment().printComments();
                 if (run == -1) System.out.println("권한이 없습니다.");
-                else if (run == -3) System.out.println("이미 추천하셨습니다.");
+                else if (run == -3) System.out.println("좋아요를 해제합니다.");
                 else if (run == 1) System.out.println("댓글이 등록되었습니다.");
-                else if (run == 2) System.out.println("해당 게시물을 추천했습니다.");
+                else if (run == 2) System.out.println("해당 게시물을 좋아합니다.");
                 else if (run == 3) System.out.println("해당 게시물을 수정했습니다.");
                 run = detailMenu(idx, writer, userID);
             }

@@ -15,7 +15,6 @@ public class Post {
     private HashMap<String, String> userInfo;
     private int greats;
     private ArrayList<String> greatUserID = new ArrayList<>();
-
     CommentControl commentControl = new CommentControl();
 
 
@@ -97,14 +96,27 @@ public class Post {
     }
 
     public int greatUp(String userID) {
-        for (String str : greatUserID) {
-            if (str.equals(userID)) {
+
+        for (int i = 0; i < greatUserID.size(); i++) {
+            if (userID.equals(greatUserID.get(i))) {
+                greats--;
+                greatUserID.remove(i);
                 return -3;
             }
         }
+
         greats++;
         greatUserID.add(userID);
-        System.out.println("해당 게시물을 추천하셨습니다.");
         return 2;
     }
+
+    public boolean matchGreatUser(String userID) {
+        for (String str : greatUserID) {
+            if (str.equals(userID)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
