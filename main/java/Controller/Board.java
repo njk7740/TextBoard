@@ -55,6 +55,8 @@ public class Board {
                     userInfo = null;
                     System.out.println("로그아웃이 완료되었습니다.");
                     break;
+                case "sort":
+                    postControl.sort();
             }
         }
     }

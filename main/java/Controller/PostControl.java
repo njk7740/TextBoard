@@ -104,4 +104,13 @@ public class PostControl {
     public void setUserInfo(HashMap<String, String> userInfo) {
         postData.setUserInfo(userInfo);
     }
+
+    public void sort() {
+        int[] type = new int[2];
+        postIO.getSortType(type);
+        if(type[0] == 1 && type[1] == 1) postData.sortNameUp();
+        else if(type[0] == 1 && type[1] == 2) postData.sortNameDown();
+        else if(type[0] == 2 && type[1] == 1) postData.sortViewUp();
+        else if (type[0] == 2 && type[1] == 2) postData.sortViewDown();
+    }
 }

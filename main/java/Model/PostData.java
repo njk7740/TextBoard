@@ -1,5 +1,10 @@
 package Model;
 
+import Controller.NameDown;
+import Controller.NameUp;
+import Controller.ViewDown;
+import Controller.ViewUp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -65,5 +70,21 @@ public class PostData {
 
     public void setUserInfo(HashMap<String, String> userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public void sortNameUp(){
+        posts.sort(new NameUp());
+    }
+
+    public void sortNameDown(){
+        posts.sort(new NameDown());
+    }
+
+    public void sortViewUp(){
+        posts.sort(new ViewUp());
+    }
+
+    public void sortViewDown(){
+        posts.sort(new ViewDown());
     }
 }

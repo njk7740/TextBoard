@@ -72,4 +72,12 @@ public class PostIO {
         System.out.print("(1. 댓글 등록, 2. 추천, 3. 수정, 4. 삭제, 5. 목록으로) : ");
         return getInt();
     }
+
+    public int[] getSortType(int[] type) {
+        System.out.print("정렬 대상을 선택해주세요 (1.번호, 2.조회수) :");
+        type[0] = getInt();
+        System.out.print(("정렬 방법을 선택해주세요 (1.오름차순, 2.내림차순) : "));
+        type[1] = getInt();
+        return type;
+    }
 }
